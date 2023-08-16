@@ -4,10 +4,15 @@ const express = require('express');
 const router = express.Router();
 
 // internal imports
-const {getUsers} = require('../controller/usersController');
+const { getUsers, addUser } = require('../controller/usersController');
+const profilePictureUpload = require("../middleware/users/profilePictureUpload")
+const { userCreateParameterValidation, userValidationHandler } = require('../middleware/users/userCreateParameterValidation')
 
 
-// users pages
+// users list pages
 router.get("/", getUsers )
 
-module.exports = router;
+// user create
+router.post("/",profilePictureUpload, userCreateParameterValidation, userValidationHandler, addUser)
+
+module.exports = router;    

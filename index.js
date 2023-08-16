@@ -17,9 +17,6 @@ const {notFoundHandler, defaultErrorHandler} = require('./middleware/common/erro
 const app = express();
 dotenv.config();
 
-console.log("starting express", __dirname)
-
-
 // database connection
 mongoose.connect(process.env.MONGO_CONNECTION_STRING).then(()=> console.log("database connection established")).catch((err)=> console.log(err));
 
@@ -32,7 +29,6 @@ app.use(express.urlencoded({ extended: true }));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-// console.log(path.join(__dirname, "../public/styles/style"))
 
 // set static folder
 app.use(express.static(path.join(__dirname, "public")));

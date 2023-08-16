@@ -2,10 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <link rel="stylesheet" href="/styles/style.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
     <title><%= title %></title>
@@ -13,9 +10,7 @@
   <body class="bg-slate-400">
     <div>
       <nav>
-        <ul
-          class="flex justify-center py-4 space-x-4 text-white text-lg"
-        >
+        <ul class="flex justify-center py-4 space-x-4 text-white text-lg">
           <li class="cursor-pointer hover:text-green-300">
             <a href="/login">Login</a>
           </li>
@@ -39,13 +34,13 @@
       <section id="modal" style="display: none">
         <div class="left-0 top-0 flex justify-center items-center">
           <form
-            action=""
+            method="post"
+            action="/users"
+            id="user_create_form"
             class="bg-white rounded-md h-1/2 w-1/4 my-10 shadow-md"
           >
             <div class="flex justify-center">
-              <h2 class="mt-5 font-serif text-gray-600">
-                User Create Form
-              </h2>
+              <h2 class="mt-5 font-serif text-gray-600">User Create Form</h2>
             </div>
             <div class="mb-5">
               <div class="mx-10 my-5">
@@ -59,7 +54,6 @@
                   id="user_name"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Username"
-                  required
                 />
               </div>
               <div class="mx-10 my-5">
@@ -73,7 +67,6 @@
                   id="phone_number"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="phone number"
-                  required
                 />
               </div>
               <div class="mx-10 my-5">
@@ -87,7 +80,19 @@
                   id="email"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="email"
-                  required
+                />
+              </div>
+              <div class="mx-10 my-5">
+                <label
+                  for="profile_picture"
+                  class="block mb-2 text-sm font-medium text-gray-600 dark:text-white"
+                  >Profile Picture</label
+                >
+                <input
+                  type="file"
+                  id="profile_picture"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="profile picture"
                 />
               </div>
               <div class="mx-10 my-5">
@@ -101,7 +106,6 @@
                   id="password"
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="•••••••••"
-                  required
                 />
               </div>
               <div class="flex items-start mb-6 mx-10 my-5">
@@ -111,7 +115,6 @@
                     type="checkbox"
                     value=""
                     class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                    required
                   />
                 </div>
                 <label
@@ -127,6 +130,7 @@
               </div>
               <button
                 type="submit"
+                id="submit"
                 class="text-white mx-10 my-5 bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Submit
@@ -176,6 +180,29 @@
           modal.style.display = "none";
         }
       });
+
+      // user create form date get
+      const userCreateForm = document.getElementById("user_create_form");
+      console.log("userCreateForm", userCreateForm);
+
+      userCreateForm.addEventListener("click", function () {
+        console.log(1);
+        console.log("userCreateForm");
+      });
+
+      // function infoSubmit(){
+      //   document.getElementById("user_create_form").submit()
+      //   // console.log("e", e)
+      //   // e.preventDefault();
+      //   // console.log("user_create_form", userCreateForm)
+      //   const username = document.getElementById("user_name").value
+      //   const phone_number = document.getElementById("phone_number").value
+      //   const email = document.getElementById("email").value
+      //   const profile_picture = document.getElementById("profile_picture").value
+      //   const password = document.getElementById("password").value
+
+      //   console.log("user_create_information_details",username, phone_number, email, profile_picture, password)
+      // }
     </script>
   </body>
 </html>
